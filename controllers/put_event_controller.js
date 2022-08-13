@@ -13,7 +13,7 @@ module.exports.index = async (req, res) => {
         // find object 
         let data = await events.find({ "_id": id }).toArray();
         // remove old file from uploads
-        if(data[0].event_image != 'uploads/default.svg'){
+        if(data[0].event_image != 'uploads/default.svg' && data[0].event_image){
         let imageFilePath = path.join(__dirname, '..', data[0].event_image);
         fs.unlink(imageFilePath, function (err) {
             if (err) { console.log(err); }
